@@ -25,19 +25,20 @@ class ResourceEvent extends GenericEvent
     const TYPE_INFO     = 'info';
     const TYPE_SUCCESS  = 'success';
 
-    public function stop($message, $type = self::TYPE_ERROR, $params = array())
+    public function stop($message, $type = self::TYPE_ERROR, $parameters = array())
     {
         $this->error = true;
         $this->messageType = $type;
         $this->message = $message;
-        $this->messageParams = $params;
+        $this->messageParameters = $parameters;
+
         $this->stopPropagation();
     }
 
     /**
      * Indicate if an error has been detected
      *
-     * @var boolean
+     * @var Boolean
      */
     protected $error = false;
 
@@ -60,12 +61,12 @@ class ResourceEvent extends GenericEvent
      *
      * @var array
      */
-    protected $messageParams = array();
+    protected $messageParameters = array();
 
     /**
      * Get error property
      *
-     * @return boolean $error
+     * @return Boolean $error
      */
     public function isStopped()
     {
@@ -93,12 +94,12 @@ class ResourceEvent extends GenericEvent
     }
 
     /**
-     * Get messageParams property
+     * Get messageParameters property
      *
-     * @return string $messageParams
+     * @return string $messageParameters
      */
-    public function getMessageParams()
+    public function getMessageParameters()
     {
-        return $this->messageParams;
+        return $this->messageParameters;
     }
 }
